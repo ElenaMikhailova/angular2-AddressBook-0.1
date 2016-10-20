@@ -1,0 +1,31 @@
+<nav class="ui attached menu">
+    <div class="ui container">
+        <div class="header item">
+            <h1>Адресная книга</h1>
+        </div>
+    </div>
+</nav>
+
+<div class="ui text container">
+    <div class="ui segment form">
+        <div class="ui fluid action input">
+            <input type="text" name="title1" placeholder="Введите имя" #InputP1>
+            <input type="text" name="title2" placeholder="Введите телефон" #InputP2>
+            <button type="button" class="ui primary button" (click)="addTodo(InputP1,InputP2)">Сохранить контакт</button>
+        </div>
+    </div>
+    <div class="ui segment form">
+        <div class="ui fluid action input">
+            <input type="text" name="title3" placeholder="Введите имя или телефон для поиска" #FilterWord>
+        </div>
+    </div>
+    <div class="ui raised segment" *ngIf="todos.length>0">
+        <div id="todos" class="ui middle aligned divided selection list">
+            <div class="todo item" *ngFor="let todo of todos" *ngIf="todo.name===FilterWord or FilterWord==="">
+                //*ngIf="todo.name===FilterWord or FilterWord===""
+                    <label>{{todo}}</label>
+                    <button  type="button" class="ui button" (click)="delTodo(todo)">X</button>
+            </div>
+        </div>
+    </div>
+</div>
